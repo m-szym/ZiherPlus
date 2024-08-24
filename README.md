@@ -7,8 +7,10 @@ Bez ręcznego przepisywania cyferek i wypełniania formularzy.
 - Selenium i openpyxl `> pip install -r requirements.txt`
 
 ## Użycie
+
 Wszystko opisane jest w quickstart.py, 
 kolejność kolumn można dopasować w excel_specific.py
+
 ---
 W skrócie
 ```python
