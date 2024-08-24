@@ -1,6 +1,7 @@
 # ZiherPlus
 ..czyli automatyczny import danych z Excela do ZiHeRa. \
-Bez ręcznego przepisywania cyferek i wypełniania formularzy.
+Bez ręcznego przepisywania cyferek i wypełniania formularzy. \
+(Wciąż jest wolny, bo ZiHeR jest wolny - na to nic nie poradzę)
 
 ## Wymagania i zależności
 - Python3.6 lub nowszy
