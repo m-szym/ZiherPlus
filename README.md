@@ -11,7 +11,6 @@ Bez ręcznego przepisywania cyferek i wypełniania formularzy.
 Wszystko opisane jest w quickstart.py, 
 kolejność kolumn można dopasować w excel_specific.py
 
----
 W skrócie
 ```python
 zp = ZiherPlus().Chrome()      # utworzenie i inicjalizacja sterownika
