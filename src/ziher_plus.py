@@ -54,6 +54,21 @@ class ZiherPlus:
         if filename:
             self.__workbook, self.__worksheet = load_workbook(filename, sheetname)
 
+    @classmethod
+    def Firefox(cls, human_control: bool = True, binary_path: str = None):
+        '''ZiherPlus driver for Firefox
+
+        :param human_control: will the procces be controlled by human or fully automated
+        :param binary_path: path to the Firefox binary to use
+        '''
+
+        if not binary_path:
+            return cls(webdriver.Firefox(), human_control)
+
+        options = webdriver.FirefoxOptions()
+        options.binary_location = binary_path
+        return cls(webdriver.Firefox(options=options), human_control)
+
     def quit(self) -> None:
         '''Closes ZiherPlus and the controlled browser
         
@@ -154,30 +169,6 @@ class ZiherPlus:
 
         return self
 
-    # Convenience constructors for different browsers
-
-    @classmethod
-    def Firefox(cls, human_control: bool = True):
-        '''ZiherPlus driver for Firefox'''
-        return cls(webdriver.Firefox(), human_control)
-
-    @classmethod
-    def Chrome(cls, human_control: bool = True):
-        '''ZiherPlus driver for Chrome'''
-        return cls(webdriver.Chrome(), human_control)
-
-    @classmethod
-    def Edge(cls, human_control: bool = True):
-        '''ZiherPlus driver for MSEdge'''
-        return cls(webdriver.Edge(), human_control)
-
-    @classmethod
-    def Safari(cls, human_control: bool = True):
-        '''ZiherPlus driver for Safari'''
-        return cls(webdriver.Safari(), human_control)
-        
-
-
     # ==========================================================
     # Private methods
     # ==========================================================
@@ -272,27 +263,19 @@ class ZiherPlusSafeMode(ZiherPlus):
     def __init__(self, driver: WebDriver):
         super().__init__(driver=driver, human_control=True)
 
-    # Convenience constructors for different browsers
-    
     @classmethod
-    def Firefox(cls):
-        '''ZiherPlusSafeMode driver for Firefox'''
-        return cls(webdriver.Firefox())
-    
-    @classmethod
-    def Chrome(cls):
-        '''ZiherPlusSafeMode driver for Chrome'''
-        return cls(webdriver.Chrome())
-    
-    @classmethod
-    def Edge(cls):
-        '''ZiherPlusSafeMode driver for MSEdge'''
-        return cls(webdriver.Edge())
-    
-    @classmethod
-    def Safari(cls):
-        '''ZiherPlusSafeMode driver for Safari'''
-        return cls(webdriver.Safari())
+    def Firefox(cls, binary_path: str = None, **kwargs):
+        '''ZiherPlusSafeMode driver for Firefox
+
+        :param binary_path: path to the Firefox binary to use
+        '''
+
+        if not binary_path:
+            return cls(webdriver.Firefox())
+
+        options = webdriver.FirefoxOptions()
+        options.binary_location = binary_path
+        return cls(webdriver.Firefox(options=options))
 
     # ==========================================================
     # Private methods
